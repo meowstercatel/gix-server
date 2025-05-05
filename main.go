@@ -18,7 +18,10 @@ func main() {
 	auth.POST("/register", func(ctx *gin.Context) {})
 
 	repo := r.Group("/repo/:id")
-	repo.GET("/", func(ctx *gin.Context) {})
+	repo.GET("/", func(ctx *gin.Context) {
+		id := ctx.Param("id")
+		ctx.String(http.StatusOK, id)
+	})
 	repo.POST("/push", func(ctx *gin.Context) {})
 
 	r.Run()
